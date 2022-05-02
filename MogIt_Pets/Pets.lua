@@ -61,11 +61,16 @@ p(69,4124,"Diseased Timber Wolf",1,2,79337,nil,nil)
 
 for k,v in pairs(VANITY_ITEMS) do
     local itemID = v.itemid or 0
+    TryCacheItem(itemID)
     local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType,
     itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice = GetItemInfo(itemID)
     local contentsPreview = v.creaturePreview or 0
     local learnedSpell = v.learnedSpell or 0
-    if contentsPreview and contentsPreview and (v.group == 18 or v.group == 7) then
+    if contentsPreview and contentsPreview and (
+        v.group == Enum.VanityFlags.TamedPets.SummonStone or 
+        v.group == Enum.VanityFlags.TamedPets.Vellum or 
+        v.group == Enum.VanityFlags.TamedPets.Whistle
+    ) then
         p(contentsPreview, itemID, itemName, 1, 1, itemID, nil, nil)
     end
 end

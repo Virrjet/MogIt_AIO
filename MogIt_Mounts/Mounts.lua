@@ -27,13 +27,14 @@ local m=t.AddMount
 
 for k,v in pairs(VANITY_ITEMS) do
     local itemID = v.itemid or 0
+    TryCacheItem(itemID)
     local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType,
     itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice = GetItemInfo(itemID)
-    if(v.group == 3) then
-        local contentsPreview = v.creaturePreview
+    if(v.group == Enum.VanityFlags.Mounts) then
+        local mount = v.creaturePreview
         local learnedSpell = v.learnedSpell or 0
-        if contentsPreview and learnedSpell then
-            m(contentsPreview, learnedSpell, itemID)
+        if mount and learnedSpell then
+            m(mount, learnedSpell, itemID)
         end
     end
 end

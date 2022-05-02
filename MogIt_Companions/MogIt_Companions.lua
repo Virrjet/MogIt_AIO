@@ -1,4 +1,5 @@
 local MogIt_Companions,c = ...;
+local m=c.AddCompanion
 local mog = MogIt;
 
 local module = mog:GetModule("MogIt_Companions") or mog:RegisterModule("MogIt_Companions",{});
@@ -49,8 +50,9 @@ function module.OnEnter(module,self)
 
 	local name,_,icon = GetSpellInfo(self.data.spell);
 	local link = GetSpellLink(self.data.spell);
-	GameTooltip:AddLine("\124T"..icon..":18\124t "..(link or name),0,1,0);
+	GameTooltip:AddLine("\124T"..icon or ""..":18\124t "..(link or name or ""),0,1,0);
 	if self.data.item then
+		TryCacheItem(self.data.item)
 		local itemName = GetItemInfo(self.data.item);
 		if itemName then
 			GameTooltip:AddDoubleLine("Item:",itemName);
