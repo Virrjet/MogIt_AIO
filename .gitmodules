@@ -1,0 +1,6 @@
+[submodule "MogIt_Ascension"]
+	path = MogIt_Ascension
+	url = https://github.com/Virrjet/MogIt_Ascension
+[submodule "MogIt"]
+	path = MogIt
+	url = https://github.com/Virrjet/MogIt
