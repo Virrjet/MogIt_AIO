@@ -49,7 +49,7 @@ function module.OnEnter(module,self)
 
 	local name,_,icon = GetSpellInfo(self.data.spell);
 	local link = GetSpellLink(self.data.spell);
-	GameTooltip:AddLine("\124T"..icon..":18\124t "..(link or name),0,1,0);
+	GameTooltip:AddLine("\124T"..(icon or "")..":18\124t "..(link or name or ""),0,1,0);
 	if self.data.item then
 		local itemName = GetItemInfo(self.data.item);
 		if itemName then
@@ -89,8 +89,8 @@ end
 function module.Unlist(module)
 	wipe(list);
 	for k,v in ipairs(mog.models) do
-		--v.model:SetUnit("PLAYER");
-		v.model:SetModel("Interface\\Buttons\\TalkToMeQuestion_Grey.mdx");
+		v.model:SetUnit("PLAYER");
+		--v.model:SetModel("Interface\\Buttons\\TalkToMeQuestion_Grey.mdx");
 	end
 end
 
